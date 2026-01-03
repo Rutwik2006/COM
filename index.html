@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Centre of Mass – Lecture</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  :root {
+    --bg-main: #0b0b0b;
+    --bg-card: #141414;
+    --bg-soft: #101010;
+    --text-main: #ffffff;
+    --text-muted: #b3b3b3;
+    --accent: #4bb3fd;
+    --border: #222;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    background: radial-gradient(circle at top, #141414, var(--bg-main));
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-y: auto;              /* ✅ allow scrolling */
+    padding: 16px;
+  }
+
+  .page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-card);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.75);
+  }
+
+  /* ---------- HEADER ---------- */
+  .header {
+    padding: 16px 18px;
+    background: linear-gradient(90deg, #1c1c1c, #121212);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header h1 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .header p {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ---------- VIDEO ---------- */
+  .video-wrapper {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: black;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: black;
+  }
+/* ---------- SCROLL SPACER ---------- */
+.scroll-spacer {
+  height: 120px; /* enough space to reach bottom controls */
+}
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    padding: 14px 18px 24px;       /* extra bottom padding */
+    font-size: 12.5px;
+    color: var(--text-muted);
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .footer strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width: 900px) {
+    .page {
+      min-height: 100vh;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+  <div class="container">
+    <div class="header">
+      <h1>Centre of Mass — Physics Lecture</h1>
+      <p>Portrait classroom recording</p>
+    </div>
+
+    <div class="video-wrapper">
+      <video
+        id="lectureVideo"
+        controls
+        preload="auto"
+        playsinline
+      >
+        <source src="lect.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <div class="footer">
+      <strong>Note:</strong> This lecture (~1 GB) is recorded in portrait mode.
+      Scroll freely and resume playback smoothly.
+    </div>
+  </div>
+</div>
+<div class="scroll-spacer"></div>
+<div class="scroll-spacer"></div>
+<div class="scroll-spacer"></div>
+
+<script>
+  const video = document.getElementById("lectureVideo");
+
+  // Ensure paused on load
+  video.pause();
+
+  // Normal audio on play
+  video.addEventListener("play", () => {
+    video.muted = false;
+  });
+
+  console.log("Scrollable portrait lecture player ready");
+</script>
+
+</body>
+</html>
